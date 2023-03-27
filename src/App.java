@@ -8,7 +8,7 @@ import java.util.Map;
 
 public class App {
     public static void main(String[] args) throws Exception {
-        // Pegar os dados da API
+        // Pegar os dados da API 
         // https://docs.oracle.com/en/java/javase/11/docs/api/java.net.http/java/net/http/HttpRequest.html
 
         String url = "https://raw.githubusercontent.com/alura-cursos/imersao-java-2-api/main/TopMovies.json";
