@@ -5,7 +5,7 @@ import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-// Essa classe foi criada pra a aula. É possível (e até recomendável) utilizar bibliotecas prontas para parsear - foi recomendado a lib "Jackson"
+// Essa classe foi criada pra a aula. É possível (e até recomendável) utilizar bibliotecas prontas para parsear - foi recomendado a lib "Jackson" 
 
 public class JsonParser {
 
