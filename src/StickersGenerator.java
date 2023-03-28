@@ -1,6 +1,8 @@
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics2D;
+import java.awt.font.FontRenderContext;
+import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.InputStream;
@@ -8,7 +10,7 @@ import javax.imageio.ImageIO;
 
 public class StickersGenerator {
 
-    public void createSticker(InputStream input, String outputFile) throws Exception {
+    public void createSticker(InputStream input, String outputFile, int rating) throws Exception {
         // leitura da imagem
         // InputStream input = new
         // URL("src/input/MostPopularMovies_3.jpg").openStream();
@@ -28,9 +30,23 @@ public class StickersGenerator {
         Font font = new Font(Font.SERIF, Font.BOLD, 50);
         resizedImage.setFont(font);
         resizedImage.setColor(Color.YELLOW);
+        
 
         // escrever uma frase de efeito na nova imagem
-        resizedImage.drawString("TOPZERA!!", originalWidth - (originalWidth / 2) - 150, newHeight - 100);
+        String text = "";
+        if (rating >= 8) {
+            text = "TOPZERA!!";
+        } else if (rating <= 6) {
+            text = "RUIM DEMAIS!";
+        } else {
+            text = "MARROMENO...";
+        }
+
+        AffineTransform affinetransform = new AffineTransform();     
+        FontRenderContext frc = new FontRenderContext(affinetransform,true,true);     
+        int textWidth = (int)(font.getStringBounds(text, frc).getWidth());
+        // System.out.println(textWidth);
+        resizedImage.drawString(text, originalWidth - (originalWidth / 2) - 150, newHeight - 100);
 
         // escrever a imagem nova num arquivo
         ImageIO.write(newImage, "png", new File("src/output/" + outputFile + ".png"));

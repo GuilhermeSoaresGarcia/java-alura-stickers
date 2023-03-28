@@ -49,11 +49,14 @@ public class App {
         // criar os stickers com os cartazes dos filmes
         StickersGenerator stickersGenerator = new StickersGenerator();
         for (Map<String, String> movie : listaDeFilmes) {
+            Double movieRating = Double.parseDouble(movie.get("imDbRating"));
+            int roundedMovieRating = (int)Math.floor(movieRating);
+            System.out.println(roundedMovieRating);
             String imageUrl = movie.get("image");
             String string = movie.get("title");
             String newOutputName = string.replaceAll("[#%&{}\\<>*?/ $!'\":@+`|=]", "-");
             InputStream image = new URL(imageUrl).openStream();
-            stickersGenerator.createSticker(image, newOutputName);
+            stickersGenerator.createSticker(image, newOutputName, roundedMovieRating);
         }
     }
 }
