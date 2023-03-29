@@ -51,7 +51,6 @@ public class App {
         for (Map<String, String> movie : listaDeFilmes) {
             Double movieRating = Double.parseDouble(movie.get("imDbRating"));
             int roundedMovieRating = (int)Math.floor(movieRating);
-            System.out.println(roundedMovieRating);
             String imageUrl = movie.get("image");
             String string = movie.get("title");
             String newOutputName = string.replaceAll("[#%&{}\\<>*?/ $!'\":@+`|=]", "-");
