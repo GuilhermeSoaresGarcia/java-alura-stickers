@@ -30,7 +30,7 @@ public class StickersGenerator {
         Font font = new Font(Font.SERIF, Font.BOLD, 50);
         resizedImage.setFont(font);
         resizedImage.setColor(Color.YELLOW);
-        
+
         // escrever uma frase de efeito na nova imagem
         String text = "";
         if (rating >= 8) {
@@ -41,9 +41,9 @@ public class StickersGenerator {
             text = "MARROMENO...";
         }
 
-        AffineTransform affinetransform = new AffineTransform();     
-        FontRenderContext frc = new FontRenderContext(affinetransform,true,true);     
-        int textWidth = (int)(font.getStringBounds(text, frc).getWidth());
+        AffineTransform affinetransform = new AffineTransform();
+        FontRenderContext frc = new FontRenderContext(affinetransform, true, true);
+        int textWidth = (int) (font.getStringBounds(text, frc).getWidth());
         resizedImage.drawString(text, (originalWidth - textWidth) / 2, newHeight - 60);
 
         // escrever a imagem nova num arquivo
@@ -54,4 +54,5 @@ public class StickersGenerator {
     // StickersGenerator generator = new StickersGenerator();
     // generator.createSticker();
     // }
+    
 }
