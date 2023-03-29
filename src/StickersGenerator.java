@@ -31,7 +31,6 @@ public class StickersGenerator {
         resizedImage.setFont(font);
         resizedImage.setColor(Color.YELLOW);
         
-
         // escrever uma frase de efeito na nova imagem
         String text = "";
         if (rating >= 8) {
@@ -45,8 +44,7 @@ public class StickersGenerator {
         AffineTransform affinetransform = new AffineTransform();     
         FontRenderContext frc = new FontRenderContext(affinetransform,true,true);     
         int textWidth = (int)(font.getStringBounds(text, frc).getWidth());
-        // System.out.println(textWidth);
-        resizedImage.drawString(text, originalWidth - (originalWidth / 2) - 150, newHeight - 100);
+        resizedImage.drawString(text, (originalWidth - textWidth) / 2, newHeight - 60);
 
         // escrever a imagem nova num arquivo
         ImageIO.write(newImage, "png", new File("src/output/" + outputFile + ".png"));
