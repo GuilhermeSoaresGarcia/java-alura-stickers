@@ -12,8 +12,6 @@ public class StickersGenerator {
 
     public void createSticker(InputStream input, String outputFile, int rating) throws Exception {
         // leitura da imagem
-        // InputStream input = new
-        // URL("src/input/MostPopularMovies_3.jpg").openStream();
         BufferedImage originalImage = ImageIO.read(input);
 
         // cria uma nova imagem em memória, com transparência e novo tamanho
@@ -41,13 +39,17 @@ public class StickersGenerator {
             text = "MARROMENO...";
         }
 
-        AffineTransform affinetransform = new AffineTransform();
-        FontRenderContext frc = new FontRenderContext(affinetransform, true, true);
+        AffineTransform affineTransform = new AffineTransform();
+        FontRenderContext frc = new FontRenderContext(affineTransform, true, true);
         int textWidth = (int) (font.getStringBounds(text, frc).getWidth());
         resizedImage.drawString(text, (originalWidth - textWidth) / 2, newHeight - 60);
 
         // escrever a imagem nova num arquivo
-        ImageIO.write(newImage, "png", new File("src/output/" + outputFile + ".png"));
+        try {
+            ImageIO.write(newImage, "png", new File("src/output/" + outputFile + ".png"));            
+        } catch (Exception e) {
+            // TODO: handle exception
+        }
     }
 
     // public static void main(String[] args) throws Exception {
