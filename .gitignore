@@ -1,3 +1,4 @@
 bin/
 .vscode/
-bin/App.class
+*.class
+api_nasa.txt
