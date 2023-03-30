@@ -45,16 +45,12 @@ public class StickersGenerator {
         resizedImage.drawString(text, (originalWidth - textWidth) / 2, newHeight - 60);
 
         // escrever a imagem nova num arquivo
-        try {
-            ImageIO.write(newImage, "png", new File("src/output/" + outputFile + ".png"));            
-        } catch (Exception e) {
-            // TODO: handle exception
+        File file = new File("src/output/");
+        if (!file.exists()) {
+            file.mkdir();
         }
+        ImageIO.write(newImage, "png", new File("src/output/" + outputFile + ".png"));
+        
     }
 
-    // public static void main(String[] args) throws Exception {
-    // StickersGenerator generator = new StickersGenerator();
-    // generator.createSticker();
-    // }
-    
 }
